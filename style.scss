@@ -19,13 +19,14 @@ html {
 
 body {
 	background: $white;
-  font: 18px/1.4 $helvetica;
+  font: 16px/1.4 $helvetica;
   color: $darkGray;
+  letter-spacing: 0.02em;
 }
 
 .container {
   margin: 0 auto;
-  max-width: 740px;
+  max-width: 1000px;
   padding: 0 10px;
   width: 100%;
 }
@@ -45,7 +46,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 26px;
   a {
     color: inherit;
   }
@@ -72,6 +73,7 @@ a {
   color: $blue;
   text-decoration: none;
 	cursor: pointer;
+  transition: color .3s;
   &:hover, &:active {
     color: $blue;
   }
@@ -151,12 +153,11 @@ img {
 //
 
 .wrapper-masthead {
-  margin-bottom: 50px;
+  border-top: 2px solid #1c445c;
 }
 
 .masthead {
   padding: 20px 0;
-  border-bottom: 1px solid $lightGray;
 
   @include mobile {
     text-align: center;
@@ -176,7 +177,11 @@ img {
   }
 
   img {
-    border-radius: 5px;
+    border-radius: 50%;
+    transition: border-radius .3s;
+    &:hover {
+      border-radius: 5px;
+    }
   }
 }
 
@@ -195,9 +200,13 @@ img {
   color: $darkGray;
   cursor: pointer;
   font-family: $helveticaNeue;
-  font-weight: 300;
   font-size: 28px;
   letter-spacing: 1px;
+  a {
+    &:hover, &:active {
+      color: $darkGray;
+    }
+  }
 }
 
 .site-description {
@@ -227,7 +236,6 @@ nav {
     margin-left: 20px;
     color: $darkGray;
     text-align: right;
-    font-weight: 300;
     letter-spacing: 1px;
 
     @include mobile {
@@ -235,6 +243,14 @@ nav {
       color: $blue;
     }
   }
+}
+
+// cover 
+
+.cover {
+  height: 440px;
+  background-image: url({{ site.baseurl }}/images/background.jpg);
+  background-size: cover;
 }
 
 //
