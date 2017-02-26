@@ -112,6 +112,18 @@ img {
   max-width: 100%;
 }
 
+hr {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  height: 1px;
+  background: #bbb;
+  background-image: -webkit-linear-gradient(left, #eee, #777, #eee);
+  background-image: -moz-linear-gradient(left, #eee, #777, #eee);
+  background-image: -ms-linear-gradient(left, #eee, #777, #eee);
+  background-image: -o-linear-gradient(left, #eee, #777, #eee);
+}
+
 // Fixes images in popup boxes from Google Translate
 .gmnoprint img {
   max-width: none;
@@ -251,6 +263,23 @@ nav {
   height: 440px;
   background-image: url({{ site.baseurl }}/images/background.jpg);
   background-size: cover;
+}
+
+.banner {
+  position: relative;
+  height: 500px;
+  background-size: cover;
+  .post-header {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+  }
+  h1 {
+    font-size: 44px;
+    color: $white;
+  }
 }
 
 //
