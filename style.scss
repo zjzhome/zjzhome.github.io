@@ -149,9 +149,10 @@ nav {
 .post {
 
   .post-header {
-    .post-link {
+    a.post-link {
       position: relative;
       display: inline-block;
+      color: $default;
       &:hover {
         &:before {
           left: 0;
@@ -191,6 +192,7 @@ nav {
     font-size: 15px;
     .read-more-link {
       padding: 2px 0;
+      color: #e98f74;
       &:hover {
         border-bottom: 1px solid $underline;
       }
