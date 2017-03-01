@@ -15,9 +15,29 @@
   </head>
 
   <body>
-    <div class="wrapper-masthead">
+  
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-profile">
+        <a href="{{ site.baseurl }}/"><img src="{{ site.baseurl }}/images/{{ site.avatar }}"></a>
+        <h4 class="sidebar-profile-name">DarkZone</h4>
+      </div>
+      <ul class="sidebar-btn">
+        <li class="sidebar-btn-link"><a href="{{ site.baseurl }}/">Home</a></li>
+        <li class="sidebar-btn-link"><a href="{{ site.baseurl }}/about">About</a></li>
+      </ul>
+      <ul class="sidebar-btn">
+        <li class="sidebar-btn-link"><a href="https://github.com/{{ site.footer-links.github }}">Github</a></li>
+        <li class="sidebar-btn-link"><a href="mailto:{{ site.footer-links.email }}">Email</a></li>
+      </ul>
+
+      <ul class="sidebar-btn">
+        <li class="sidebar-btn-link"><a href="{{ site.baseurl }}/feed.xml">RSS</a></li>
+      </ul>
+    </div>
+
+    <div class="wrapper-masthead j-push">
       <header class="masthead">
-        <a href="{{ site.baseurl }}/" class="site-avatar"><img src="{{ site.baseurl }}/images/{{ site.avatar }}" /></a>
+        <div class="site-avatar" id="avatar"><img src="{{ site.baseurl }}/images/{{ site.avatar }}" /></div>
 
         <div class="site-info">
           <a href="{{ site.baseurl }}/">{{ site.name }}</a>
@@ -32,18 +52,21 @@
       </header>
     </div>
 
-    <div id="main" role="main">      
+    <div class="j-push" id="main" role="main">      
         {{ content }}
     </div>
 
-    <div class="wrapper-footer">
+    <!-- 
+    <div class="wrapper-footer j-push">
       <div class="container">
         <footer class="footer">
           {% include svg-icons.html %}
         </footer>
       </div>
     </div>
+    -->
 
+    <script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="/js/index.js"></script>
 
     {% include analytics.html %}
