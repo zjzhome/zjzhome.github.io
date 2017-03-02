@@ -160,6 +160,13 @@
   width: 40px;
   height: 40px;
   cursor: pointer;
+  -webkit-transition: -webkit-transform .25s ease-in-out;
+  transition: transform .25s ease-in-out;
+
+  &.pushed {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
 
   @include mobile {
     float: none;
