@@ -203,29 +203,6 @@
   }
 }
 
-nav {
-  position: absolute;
-  right: 0;
-  top: 0;
-  font-size: 18px;
-
-  @include mobile {
-    float: none;
-    display: block;
-    font-size: 16px;
-  }
-
-  a {
-    margin-left: 20px;
-    text-align: right;
-    letter-spacing: 1px;
-
-    @include mobile {
-      margin: 0 10px;
-      color: $blue;
-    }
-  }
-}
 
 // cover 
 
@@ -283,6 +260,10 @@ nav {
 
 .post {
 
+  margin-top: 30px;
+  padding-bottom: 30px;
+  font-size: 18px;
+
   .post-header {
     a.post-link {
       position: relative;
@@ -297,7 +278,7 @@ nav {
       &:before {
         content: '';
         position: absolute;
-        z-index: -1;
+        z-index: 1;
         height: 2px;
         bottom: 0;
         left: 51%;
@@ -319,8 +300,33 @@ nav {
     font-style: italic;
   }
 
+  ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  ul ul, ol ul {
+    list-style-type: circle;
+  }
+
+  ul li, ol li {
+    margin-bottom: 8px;
+  }
+
+  code {
+    padding: 0.2em;
+    margin: 0;
+    font-size: 85%;
+    background-color: rgba(27,31,35,0.05);
+    border-radius: 3px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  }
+
   .comments {
-    margin-top: 10px;
+    margin-top: 20px;
   }
 
   .read-more {
