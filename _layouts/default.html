@@ -15,56 +15,75 @@
   </head>
 
   <body>
-  
-    <div class="sidebar" id="sidebar">
-      <div class="sidebar-profile">
-        <a href="{{ site.baseurl }}/"><img src="{{ site.baseurl }}/images/{{ site.avatar }}"></a>
-        <h4 class="sidebar-profile-name">DarkZone</h4>
-      </div>
-      <ul class="sidebar-btn">
-        <li class="sidebar-btn-link"><a href="{{ site.baseurl }}/">Home</a></li>
-        <li class="sidebar-btn-link"><a href="{{ site.baseurl }}/about">About</a></li>
-      </ul>
-      <ul class="sidebar-btn">
-        <li class="sidebar-btn-link"><a href="https://github.com/{{ site.footer-links.github }}">Github</a></li>
-        <li class="sidebar-btn-link"><a href="mailto:{{ site.footer-links.email }}">Email</a></li>
-      </ul>
-
-      <ul class="sidebar-btn">
-        <li class="sidebar-btn-link"><a href="{{ site.baseurl }}/feed.xml">RSS</a></li>
-      </ul>
-    </div>
-
-    <div class="wrapper-masthead j-push">
-      <header class="masthead">
-        <div class="site-avatar" id="avatar"><img src="{{ site.baseurl }}/images/{{ site.avatar }}" /></div>
-
-        <div class="site-info">
-          <a href="{{ site.baseurl }}/">{{ site.name }}</a>
+    <div class="blog">
+      <div class="sidebar" id="sidebar">
+        <div class="sidebar-profile">
+          <a href="{{ site.baseurl }}/"><img src="{{ site.baseurl }}/images/{{ site.avatar }}"></a>
+          <h4 class="sidebar-profile-name">DarkZone</h4>
         </div>
+        <ul class="sidebar-btn">
+          <li class="sidebar-btn-link">
+            <a href="{{ site.baseurl }}/">
+              <span class="icon ion-social-javascript"></span>
+              <span class="sidebar-btn-link-desc">Home</span>
+            </a>
+          </li>
+          <li class="sidebar-btn-link">
+            <a href="{{ site.baseurl }}/about">
+              <span class="icon ion-social-html5"></span>
+              <span class="sidebar-btn-link-desc">About</span>
+            </a>
+          </li>
+        </ul>
+        <ul class="sidebar-btn">
+          <li class="sidebar-btn-link">
+            <a href="https://github.com/{{ site.footer-links.github }}">
+              <span class="icon ion-social-github"></span>
+              <span class="sidebar-btn-link-desc">Github</span>
+            </a>
+          </li>
+          <li class="sidebar-btn-link">
+            <a href="mailto:{{ site.footer-links.email }}">
+              <span class="icon ion-email"></span>
+              <span class="sidebar-btn-link-desc">Email</span>
+            </a>
+          </li>
+        </ul>
 
-        <!-- 
-        <nav>
-          <a href="{{ site.baseurl }}/">主页</a>
-          <a href="{{ site.baseurl }}/about">关于</a>
-        </nav>
-        -->
-      </header>
-    </div>
-
-    <div class="j-push" id="main" role="main">      
-        {{ content }}
-    </div>
-
-    <!-- 
-    <div class="wrapper-footer j-push">
-      <div class="container">
-        <footer class="footer">
-          {% include svg-icons.html %}
-        </footer>
+        <ul class="sidebar-btn">
+          <li class="sidebar-btn-link">
+            <a href="{{ site.baseurl }}/feed.xml">
+              <span class="icon ion-social-rss"></span>
+              <span class="sidebar-btn-link-desc">RSS</span>
+            </a>
+          </li>
+        </ul>
       </div>
+
+      <div class="wrapper-masthead j-push">
+        <header class="masthead">
+          <div class="site-avatar" id="avatar"><img src="{{ site.baseurl }}/images/{{ site.avatar }}" /></div>
+
+          <div class="site-info">
+            <a href="{{ site.baseurl }}/">{{ site.name }}</a>
+          </div>
+
+          <!-- 
+          <nav>
+            <a href="{{ site.baseurl }}/">主页</a>
+            <a href="{{ site.baseurl }}/about">关于</a>
+          </nav>
+          -->
+        </header>
+      </div>
+
+      <div class="j-push" id="main" role="main">      
+          {{ content }}
+      </div>
+
     </div>
-    -->
+
+    <div class="cover-all"></div>
 
     <script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="/js/index.js"></script>

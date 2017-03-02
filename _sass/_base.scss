@@ -8,7 +8,6 @@ html {
 }
 
 body {
-  background: $white;
   font-family: $default-font-family;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
@@ -17,6 +16,7 @@ body {
   color: $default;
   letter-spacing: 0.02em;
   height: 100%;
+  background: rgba(17,26,35,0);
 }
 
 .container {

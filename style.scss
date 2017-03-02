@@ -7,6 +7,7 @@
 
 @import "reset";
 @import "variables";
+@import "ionicons";
 // Syntax highlighting @import is at the bottom of this file
 
 @import "base";
@@ -14,6 +15,14 @@
 /*********************/
 /* LAYOUT / SECTIONS */
 /*********************/
+
+.blog {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
 
 // sidebar
 // 
@@ -26,7 +35,7 @@
   transform: translate3d(-250px,0,0);
   width: 250px;
   z-index: 20;
-  text-align: center;
+  border-top: 2px solid #1c445c;
   background: rgba(17,26,35,0);
   -webkit-transition: -webkit-transform .25s ease-in-out;
   transition: transform .25s ease-in-out;
@@ -39,6 +48,7 @@
   .sidebar-profile {
     padding-top: 60px;
     margin-bottom: 30px;
+    text-align: center;
 
     img {
       width: 90px;
@@ -48,13 +58,14 @@
     }
 
     .sidebar-profile-name {
-
+      font-size: 24px;
+      letter-spacing: 0.05em;
     }
   }
 
   .sidebar-btn {
     margin-bottom: 15px;
-    padding: 0;
+    padding: 0 0 0 28px;
     .sidebar-btn-link {
       width: 100%;
       height: 45px;
@@ -83,6 +94,27 @@
           transition-property: right, left;
           transition-timing-function: ease-out;
         }
+
+        .icon {
+          display: inline-block;
+          text-align: center;
+          width: 30px;
+          height: 30px;
+          line-height: 30px;
+          padding-top: 0;
+          vertical-align: middle;
+          margin-right: 15px;
+          font-size: 20px;
+        }
+
+        .sidebar-btn-link-desc {
+          display: inline-block;
+          height: 35px;
+          line-height: 35px;
+          font-size: 16px;
+          letter-spacing: .3px;
+          vertical-align: middle;
+        }
       }
 
     }
@@ -110,6 +142,7 @@
 .wrapper-masthead {
   padding: 0 15px;
   border-top: 2px solid #1c445c;
+  background: $white;
 }
 
 .masthead {
@@ -194,6 +227,7 @@ nav {
   height: 500px;
   background-image: url({{ site.baseurl }}/images/background.jpg);
   background-size: cover;
+  background-color: $white;
   .cover-inner {
     position: absolute;
     left: 0;
@@ -208,6 +242,7 @@ nav {
   position: relative;
   height: 500px;
   background-size: cover;
+  background-color: $white;
   .post-header {
     position: absolute;
     top: 50%;
@@ -224,6 +259,10 @@ nav {
 //
 // .main
 //
+
+#main {
+  background-color: $white;
+}
 
 .posts > .post {
   padding-bottom: 2em;
@@ -301,7 +340,19 @@ footer {
   text-align: center;
 }
 
+.cover-all {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-image: url(/images/cover.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+}
+
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "highlights";
-@import "svg-icons";
+
