@@ -248,9 +248,13 @@
   background-color: $white;
 }
 
+.posts {
+  padding-bottom: 50px;
+}
+
 .posts > .post {
   padding-bottom: 2em;
-  border-bottom: 1px solid $lightGray;
+  border-bottom: 1px solid rgba(28,68,92,.28);
 }
 
 .posts > .post:last-child {
@@ -287,6 +291,16 @@
         transition-duration: 0.2s;
         transition-property: right, left;
         transition-timing-function: ease-out;
+      }
+    }
+  }
+
+  .entry {
+    a {
+      color: #e98f74;
+      padding: 2px 0;
+      &:hover {
+        border-bottom: 1px solid $underline;
       }
     }
   }
