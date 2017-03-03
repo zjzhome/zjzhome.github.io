@@ -22,6 +22,9 @@
   height: 100%;
   left: 0;
   top: 0;
+  overflow-x: hidden;
+  -webkit-transition: opacity .25s ease-in-out;
+  transition: opacity .25s ease-in-out;
 }
 
 // sidebar
@@ -392,6 +395,76 @@
   background-repeat: no-repeat;
   background-size: cover;
   z-index: -1;
+}
+
+.about {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 30;
+  background: rgba(17,26,35,0);
+
+  .icon {
+    font-size: 16px;
+  }
+
+  .about-card {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate3d(-50%, -1000px, 0);
+    transform: translate3d(-50%, -1000px, 0);
+    width: 400px;
+    background-color: #fff;
+    padding: 30px 0;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 16px;
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,.5);
+    -moz-box-shadow: 0 0 5px rgba(0,0,0,.5);
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+    -webkit-transition: -webkit-transform .4s ease-in-out;
+    transition: transform .4s ease-in-out;
+
+    p {
+      font-size: 16px;
+    }
+
+    .about-card-close {
+      position: absolute;
+      right: 8px;
+      top: 4px;
+    }
+
+    .about-card-name {
+      font-size: 24px;
+      color: #4a4a4a;
+    }
+
+    .about-card-job, .about-card-location {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 0 30px 0 20px;
+
+      p {
+        margin: 6px 0;
+      }
+
+      .icon {
+        color: #383d44;
+        font-size: 20px;
+      }
+    }
+    
+    img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+    }
+  }
 }
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS

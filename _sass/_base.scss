@@ -136,10 +136,10 @@ hr {
 
 /* http://www.zhangxinxu.com/wordpress/2013/11/css-svg-image-blur/ */
 .blur {     
-    -webkit-filter: blur(2px); /* Chrome, Opera */
-       -moz-filter: blur(2px);
-        -ms-filter: blur(2px);    
-            filter: blur(2px);
+    -webkit-filter: blur(10px); /* Chrome, Opera */
+       -moz-filter: blur(10px);
+        -ms-filter: blur(10px);    
+            filter: blur(10px);
     
     filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
 }
