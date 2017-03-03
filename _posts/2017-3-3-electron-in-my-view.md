@@ -109,7 +109,7 @@ remote.BrowserWindow.fromId(win2Id).webContents.send('someMsg', 'someThing');
 
 Electron 内集成了 Nodejs，大大的方便了开发。Nodejs 在主进程和渲染进程中都可以使用，上面说到，渲染进程因为安全限制，不能直接操作原生 GUI。虽然如此，因为集成了 Nodejs，渲染进程也有了操作系统底层 API 的能力，Nodejs 中常用的 Path、fs、Crypto 等模块在 Electron 可以直接使用，方便我们处理链接、路径、文件MD5等，同时npm还有成千上万的模块供我们选择。
 
-尤其对于 Electron 不方便实现的功能，Nodejs 可能有奇效。我们应用中用户需要下载文件消息的文件，需要支持同事下载多个，并且需要给出进度，Electron 并没有提供一个好用的下载接口，所以我们使用 Nodejs 的 http、fs 模块结合 Electron 的 dialog 模块实现了文件下载，并且实现了下载进度以及下载超时错误提示。
+尤其对于 Electron 不方便实现的功能，Nodejs 可能有奇效。我们应用中用户需要下载文件消息的文件，需要支持同事下载多个，并且需要给出进度，Electron 并没有提供一个好用的下载接口，所以我们使用 Nodejs 的 `http`、`fs` 模块结合 Electron 的 dialog 模块实现了文件下载，并且实现了下载进度以及下载超时错误提示。
 
 ## HTML5增强
 
@@ -128,7 +128,7 @@ Electron 内集成了 Nodejs，大大的方便了开发。Nodejs 在主进程和
 
 这次的新产品有一个需求，需要在客户端内加载 Webview 应用，并且要提供 jssdk 供 Web 应用使用，以获取更多的本地能力。其实 Electron 天然的优势可以加载外部应用的。但是要考虑的问题还是比较多的，比如要展示页面加载的进度、监听页面何时加载完成、页面 DOM 何时加载完成、服务端一些302重定向如何（比如一些跳转认证）处理、如何给 Web 应用提供 jssdk 等等。
 
-Electron 提供了一系列的事件来监听页面的加载，细化到了页面开始加载、页面加载完成、页面加载失败、DOM Ready、框架加载 (did-frame-finish-load)、重定向（did-get-redirect-request）等等，通过监听这些事件可以对页面状态进行处理。
+Electron 提供了一系列的事件来监听页面的加载，细化到了页面开始加载、页面加载完成、页面加载失败、DOM Ready、框架加载 (`did-frame-finish-load`)、重定向（`did-get-redirect-request`）等等，通过监听这些事件可以对页面状态进行处理。
 
 另外，如何给 Web 应用提供 jssdk 呢？我们需要依赖 [`BrowserWindow`](http://electron.atom.io/docs/api/browser-window/) 的一个配置项 - `preload`，preload 允许你指定一段脚本在页面加载之前载入，这段脚本你可以使用 Electron 和 Nodejs 的 API，即使你在配置中不允许使用 Nodejs。
 
