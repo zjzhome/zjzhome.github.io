@@ -22,5 +22,5 @@ tags: blog
 * 博客 fork 自 [barryclark/jekyll-now](https://github.com/barryclark/jekyll-now)
 * 参考 [hexo-theme-tranquilpeak/](http://louisbarranqueiro.github.io/hexo-theme-tranquilpeak/)
 * 参考 [http://www.ahonn.me/](http://www.ahonn.me/)
-* 博客页面中的 banner 图片如未特殊说明，均来自 [PEXELS](https://www.pexels.com/?ref=producthunt)
+* 感谢 [PEXELS](https://www.pexels.com/?ref=producthunt)
 * 博客图标来自 [ionicons](http://ionicons.com/)
