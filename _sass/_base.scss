@@ -143,3 +143,9 @@ hr {
     
     filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
 }
+
+::selection {
+    background: #ef8778;
+    color: #fff;
+    text-shadow: 0 0 transparent;
+}
