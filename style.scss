@@ -143,6 +143,9 @@
 //
 
 .wrapper-masthead {
+  position: absolute;
+  left: 0;
+  width: 100%;
   padding: 0 15px;
   border-top: 2px solid #1c445c;
   background: $white;
@@ -248,6 +251,10 @@
 //
 
 #main {
+  position: absolute;
+  top: 62px;
+  left: 0;
+  right: 0;
   background-color: $white;
 }
 

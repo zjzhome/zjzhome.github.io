@@ -2,13 +2,16 @@
 layout: default
 ---
 
-<div class="container pages">
-  <article class="page">
+<div class="cover" style="background-image: url({{ site.baseurl }}/images/{{ page.cover }})">
+  <div class="cover-inner blur"></div>
+</div>
+
+<div class="container">
+  <article class="post">
 
     <div class="entry">
       {{ content }}
     </div>
 
-    {% include disqus.html %}
   </article> 
 </div>
