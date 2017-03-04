@@ -308,6 +308,13 @@
     }
   }
 
+  h2, h3 {
+    font-weight: bold;
+    padding-left: 15px;
+    border-left: 3px solid $underline;
+    line-height: 1.4;
+  }
+
   blockquote {
     margin: 1.8em .8em;
     border-left: 2px solid $gray;
@@ -428,6 +435,10 @@
     box-shadow: 0 0 5px rgba(0,0,0,.5);
     -webkit-transition: -webkit-transform .4s ease-in-out;
     transition: transform .4s ease-in-out;
+
+    @include mobile {
+      width: 80%;
+    }
 
     p {
       font-size: 16px;
