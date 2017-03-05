@@ -25,6 +25,8 @@
   overflow-x: hidden;
   -webkit-transition: opacity .25s ease-in-out;
   transition: opacity .25s ease-in-out;
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
 }
 
 // sidebar
