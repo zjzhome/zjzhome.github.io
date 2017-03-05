@@ -2,7 +2,7 @@
 layout: post
 title: 前端长列表渲染优化
 banner: pexels-photo-257930.jpeg
-tags: clustery,javascript,performance optimization
+tags: clustery javascript performance
 ---
 
 对于长列表，一般的应用可以通过分页解决。然而现在很多的应用列表部分可能是滚动加载的，随着滚动，列表项越来越多，影响性能和体验，尤其是移动设备上；另一种是IM应用，像会话列表、好友列表、群成员列表通常会一次性加载。在这些情况下，对于长列表的优化就显得很有必要。

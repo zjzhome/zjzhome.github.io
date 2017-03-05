@@ -2,7 +2,7 @@
 layout: post
 title: 我眼中的 Electron 
 banner: electron.jpg
-tags: electron,javascript,desktop
+tags: electron javascript desktop
 ---
 
 

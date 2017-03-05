@@ -2,7 +2,7 @@
 layout: post
 title: 新的博客和新的一年
 banner: coffee-apple-iphone-laptop.jpg
-tags: blog
+tags: blog life
 ---
 
 之前在好多平台上尝试写过博客，只有[博客园](http://www.cnblogs.com/zjzhome/)还得以保留，里面有我许多初学和刚刚参见工作时候的一些稚嫩的文章，而且样式也是我花了一些时间定制过的。不过总感觉博客园各种东西混杂，而且博客园的样式也是万年不更新了。最终还是决定自己搭建一个，托管在 Github 上足够简单和方便，也能够简单的定制操作逻辑和喜欢的样式。
