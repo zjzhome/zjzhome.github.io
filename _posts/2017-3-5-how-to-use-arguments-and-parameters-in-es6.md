@@ -5,7 +5,7 @@ banner: es6.jpg
 tags: ES6 javascript function arguments parameters
 ---
 
-ECMAScript 6（或者叫 ECMAScript 2015）是 ECMAScript 的最新标准，极大的提高了 JavaScript 中处理参数的能力。现在我们可以使用 rest 参数（rest parameters）、默认值（default values）和解构（destructuring）以及其他许多新的特性。本文我们将探索参数(arguments)和参数(parameter)的方方面面，看一下ES6是如何提升对他们改进和提升的。
+ECMAScript 6（或者叫 ECMAScript 2015）是 ECMAScript 的最新标准，极大的提高了 JavaScript 中处理参数的能力。现在我们可以使用 rest 参数（rest parameters）、默认值（default values）和解构（destructuring）以及其他许多新的特性。本文我们将探索参数(arguments)和参数(parameter)的方方面面，看一下ES6是如何对他们改进和提升的。
 
 ## Arguments 和 Parameters 
 
