@@ -115,7 +115,119 @@ module.exports = {
 
 你依然可以运行 `npm start`，并得到相同的结果。这样我们就完成了 `example2` 分支的内容。
 
-## 使用 Loader
+## 使用 Loaders
+
+主要有两种方法来增强 Webpack 的能力：loaders 和 plugins。插件我们将稍后讨论。现在我们将关注点放在 loaders 上，loaders 可以用来对特定类型的文件进行转化和操作。你可以将多个 loader 串起来对同一个文件进行处理。例如，你可以使用 [ESLint](http://eslint.org/)对所有扩展名是 `.js` 的文件进行检查，并且使用 [Babel](https://babeljs.io/)将他们从 ES2015 的语法编译为 ES5，如果 ESLint 出现警告就会在控制台打印出来，如果遇到错误，就会中断 Webpack 操作。
+
+说回我们的小程序，我们不会安装任何检查工具，但我们会安装 Babel，把我们的代码编译为 ES5。当然，我们需要先写点 ES2015 的代码，我们把 `main.js` 的内容改为：
+
+```js
+import { map } from 'lodash';
+
+console.log(map([1,2,3,4,5,6], n => n*n));
+```
+
+这段代码本质上做了和之前相同的事情，但是（1）我们使用了箭头函数，而不是名为`square`的方法，并且（2）我们使用了 `import` 语法来引入的 lodash 的 map 方法。这样就会把整个 lodash 文件打包进来，而不是通过 `lodash/map` 只引入 `map` 相关的方法。如果你愿意，你可以把代码第一行改为 `import map from lodash/map` , 但是我这么做有这么几点原因：
+
+* 在大型应用中，你或许会引入很大块的lodash，这和全部引入也差不多。
+* 如果你使用 Backbone.js，很难做到每次单独引入方法，因为没有文档告诉你 Backbone.js 到底需要多少个方法。
+* 在下一个版本的 webpack 中，会引入一项新的技术 - tree-shaking，可以排除掉没有用到的模块，所以还是达到了上面的目的。
+* 我想把这个作为例子，来告诉你刚才我提到的这一点（*译者注： 应该是 tree-shaking 这一点*）。
+
+（注意：Lodash 可以使用上述两种方法引入，是因为它的开发者使之可以这么做，而不是所有的库都可以这么做）
+
+不管怎么说，我们使用了一些 ES2015 的语法，我们需要将其编译为 ES5，这样就可以在老旧的浏览器中使用了（[ES2015在新的浏览器的支持](http://kangax.github.io/compat-table/es6/)还是很喜人的）。我们需要 Babel 及其附属来配合 webpack 工作，至少需要 [babel-core](https://www.npmjs.com/package/babel-core)（Babel的核心，承担大部分工作）、[babel-loader](https://www.npmjs.com/package/babel-loader)（基于 babel-core 的 webpack loader）、[babel-preset-2015](https://www.npmjs.com/package/babel-loader)（包含了 ES2015 编译到 ES5 的规则），我们还需要 [babel-plugin-transform-runtime](https://www.npmjs.com/package/babel-plugin-transform-runtime)和[babel-polyfill](https://www.npmjs.com/package/babel-polyfill)。这俩都是用来在你的代码加 polyfill 或者添加 helper 方法，用途差不多。不过我全部添加到项目里，你会看见他们是如何工作的，如果你想更多的了解他们，请求阅读文档： [polyfill](http://babeljs.io/docs/usage/polyfill/) 和 [runtime transform](http://babeljs.io/docs/plugins/transform-runtime/)。
+
+一股脑的安装：`npm i -D babel-core babel-loader babel-preset-es2015 babel-plugin-transform-runtime babel-polyfill`，然后在配置文件中使用他们，首先需要一块地方配置 loaders，更新你的 webpack.config.js：
+
+```js
+module.exports = {
+    entry: './src/main.js',
+    output: {
+        path: './dist',
+        filename: 'bundle.js'
+    },
+    module: {
+        rules: [
+            …
+        ]
+    }
+};
+```
+
+我们添加了一个属性 `module`，里面包含 `rules` 属性，rules属性是一个数组，包含了你所用的的所有 loader 的配置。接下来我们会在这里添加 babel-loader，对每个 loader 来说，我们至少需要设置两个选项：`test` 和 `loader`，`test` 通常是一个正则表达式，来匹配每个文件的绝对路径，不过一般我们只是匹配文件的扩展名，例如，`/\.js$/` 匹配扩展名为 `.js` 的文件；如果你想在应用中使用 React，设置 `/\.jsx?$/`，就会匹配 `.js` 和 `.jsx`。现在我们需要设置 `loader`，也就是 `test` 匹配到的文件需要使用的 loader。
+
+loader 通过传入 loader 的名字来指定，loader 的名字有短横线分割，比如 `'babel-loader!eslint-loader'`。webpack 从右向左读取，`esling-loader` 会先于 `babel-loader` 执行。如果你想给 loader 设置选项，使用查询字符串语法。例如给 babel 设置 `fakeoption` 为 `true`，我们需要把之前的例子改为 `babel-loader?fakeoption=true!eslint-loader`，你也可以使用 `use` 选项传入 loaders 的数组，如果你觉得这样更加简单更加易读。例如，最后的一个例子就变成：` use: ['babel-loader?fakeoption=true', 'eslint-loader']`，如果你增强可读性，可以写成多行。
+
+*译者注: 上文其实是 webpack1 和 webpack2 的区别：[https://doc.webpack-china.org/guides/migrating/#-loaders](https://doc.webpack-china.org/guides/migrating/#-loaders)*
+
+因为我们只用到了 babel-loader，loader 的配置如下：
+
+```js
+rules: [
+    { test: /\.jsx?$/, loader: 'babel-loader' }
+]
+```
+
+如果只用到了一个 loader，这里有另外一种方式去设置 loader 的选项，不是之前提到的查询字符串的方式：使用 `options` 选项，它可以使用 key-value 的形式，对于例子中的 `fakeOptions`，我们可以这样配置：
+
+```js
+rules: [
+    {
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
+        options: {
+            fakeoption: true
+        }
+    }
+]
+```
+
+我们用这种语法来为 babel-loader 设置几个选项
+
+```js
+rules: [
+    {
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
+        options: {
+            plugins: ['transform-runtime'],
+            presets: ['es2015']
+        }
+    }
+]
+```
+
+我们设置了 `presets` ，这样所有的 ES2015的特性都会被编译为 ES5，我们还设置了 transform-runtime 插件。上文提到，这个插件不是必需的，在这里只是展示如何使用它。另一种方式是使用 `.babelrc` 来配置这些选项，但这样我就不能给你们展示如何在 webpack 中配置了。通常来说，我还是建议使用 `.babelrc`，但在我们的项目中还是保持在 webpack 中配置。
+
+还有一件配置需要告诉 babel-loader。我们需要告诉 babel 不要处理 `node_modules` 目录，这样可以提高打包速速。增加 `exclude` 选项，告诉 loader 不要处理这个目录下的文件。`exclude` 也是一个正则表达式，所以我们设置为 `/node_modules/`：
+
+```js
+rules: [
+    {
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        options: {
+            plugins: ['transform-runtime'],
+            presets: ['es2015']
+        }
+    }
+]
+```
+
+此外，也可以使用 `include` 的属性，表示我们只是用 `src` 目录，不过我想还是先不这么做。重新执行 `npm start`，得到可以在浏览器运行的 ES5 代码。如果你决定使用 `babel-polyfill` 代替 transform-runtime 插件，你需要做一些改变。首先，删除 `plugins: ['transform-runtime]`（如果之后你也不需要它了，可以通过 npm 卸载掉），然后修改 webpack 的 `entry`：
+
+```js
+entry: [
+    'babel-polyfill',
+    './src/main.js'
+],
+```
+
+我们使用一个数组声明了多入口文件，而不是单一入口，新的入口文件就是这个 polyfill。这样就可以使得 polyfill 在打包文件之前，这样就保证了在我们处理代码之前，polyfill是存在的。
+
+如果不在配置文件中配置，我们需要在 `src/main.js` 的文件头部添加一行 `import 'babel-polyfill;`，和在配置文件中效果是一样的。我之所以放在配置文件中是因为在最后一个例子中会用到，并且这也是一个展示合并多个入口文件到一个文件的好例子。好了，这就是 `example3` 分支的所有内容，再一次运行 `npm start` 验证一下。
 
 ## 使用 Handlebars Loader
 
