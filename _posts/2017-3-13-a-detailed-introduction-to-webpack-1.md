@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 详解 Webpack
+title: 详解 Webpack（上）
 banner: webpack.jpg
 tags: webpack,javascript
 ---
@@ -231,11 +231,71 @@ entry: [
 
 ## 使用 Handlebars Loader
 
-## 使用插件
+让我们添加另外一个 loader：Handlebars loader，Handlebars loader会把模板编译为一个方法，当你引入一个 handlebars 模板的时候，这个编译后的方法会被引入 JavaScript 文件中，这也是我喜欢 loaders 的一个原因：你可以引入非 JavaScript 文件，当它们全部打包后，可以和 JavaScript 以前使用。另一个例子是你可以使用 loader 引入一个图片，并且可以把图片转换为 base64 编码的 url，JavaScript 就可以把它内联到页面中。如果你把多个 loader 串联起来，其中一个 loader 甚至可以对图片进行优化到一个比较小的尺寸。
 
-## 懒加载
+通常来说，首先需要安装 loader：`npm install -D handlebars-loader`。使用之前，要先安装 HandleBars：`npm install -D handlebars`。这样你就可以控制 Handlebars 的版本，而不用去同步 loader 的版本，做到单独升级。
 
-## 创建 Vendor Chunk
+现在我们都安装了，在`src`目录下创建一个 `numberlist.hbs` 模板文件：
+*译者注：因为模板会导致博客解析错误，所以我给两个大括号之前加了斜线。。。*
+
+```html
+<ul>
+  {\{#each numbers as |number i|}}
+    <li>{{number}}</li>
+  {\{/each}}
+</ul>
+```
+
+这个模板接受一个数组（从变量名字来看是个数字，当然不是数字也能用），创建一个无序的列表。
+
+现在调整 JavaScript 文件，使用这个模板输出一个列表，而不是仅仅打印到控制台上，`main.js` 现在看起来是这样：
+
+```js
+import { map } from 'lodash';
+import template from './numberlist.hbs';
+
+let numbers = map([1,2,3,4,5,6], n => n*n);
+
+console.log(template({numbers}));
+```
+
+遗憾的是，现在并不能正常工作，因为 webpack 不能识别 `numberslist.hbs`，它不是 JavaScript 文件。我们可以在 `import` 语句中添加一点东西来使用 Handlebars loader：
+
+```js
+import { map } from 'lodash';
+import template from 'handlebars-loader!./numberlist.hbs';
+
+let numbers = map([1,2,3,4,5,6], n => n*n);
+
+console.log(template({numbers}));
+```
+
+通过在文件路径的前面加一个 loader 的名字，用惊叹号分割开，这样 webpack 就能使用 loader 来处理这个文件了。这样做的话，我们不用在配置文件中做任何事情。然而，在一个大型项目中，你可能加载多个模板，所以在配置文件中做会更有效，这样就不用对每个加载的模板路径前面加上 `handlebars!`，更新配置为：
+
+```js
+rules: [
+    {/* babel loader config… */},
+    { test: /\.hbs$/, loader: 'handlebars-loader' }
+]
+```
+
+很简单。我们要做的就是告诉 webpack 使用 handlerbars-loader 来处理所有 `.hbs` 后缀的文件。这样我们就做完了 `example4` 分支中的所有事情，现在运行 `npm start`，你会看见 webpack 打包输出：
+
+```html
+<ul>
+<li>1</li>
+<li>4</li>
+<li>9</li>
+<li>16</li>
+<li>25</li>
+<li>36</li>
+</ul>
+```
+
+---
+
+文章是在太长，分成上下两部分。
+原文地址：[A Detailed Introduction To Webpack](https://www.smashingmagazine.com/2017/02/a-detailed-introduction-to-webpack/)
 
 
 
