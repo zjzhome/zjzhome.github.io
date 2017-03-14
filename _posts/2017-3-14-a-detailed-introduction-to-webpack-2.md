@@ -11,7 +11,7 @@ JavaScript 模块打包工具已经出现有一段时间了。RequireJS 在2009�
 
 ## 使用插件
 
-插件相对于 loaders 来说，是为 webpack 提供一些实用性的功能。你有充分的自由将它们加入到 webpack 的工作流中，它们并不限制于某些文件。它们可以注入到任何地方，所以能做的就更多。很难去解释清插件到底能做什么，所以我只是告诉一个[名为 webpack-plugin npm 包的列表](https://www.npmjs.com/search?q=webpack-plugin)，应该能够很好的说明这一点。
+插件为 webpack 提供了一些实用性的功能。你有充分的自由将它们加入到 webpack 的工作流中，不像 loaders，插件并不限制用于某些文件。它们可以注入到任何地方，所以能做的就更多。很难去解释清插件到底能做什么，所以我只是告诉一个[名为 webpack-plugin npm 包的列表](https://www.npmjs.com/search?q=webpack-plugin)，应该能够很好的说明这一点。
 
 在本教程中，我们仅接触两个插件（另一个稍后使用）。这篇文章到这里已经很长了，那我们就继续来一个插件的 demo。第一个我们要使用的插件是 [HTML Webpack Plugin](https://github.com/ampedandwired/html-webpack-plugin)，这个插件可以创建一个 HTML - 我们终于可以使用这个 web 应用了！
 
