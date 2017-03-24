@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Simple Algorithms 笔记
-banner: coffee-apple-iphone-laptop.jpg
+banner: macbook-computer-clean-hero.jpg
 tags: algorithms
 ---
 
