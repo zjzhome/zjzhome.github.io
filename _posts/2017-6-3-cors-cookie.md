@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 跨域读写 Cookie
-banner: cors-cookie.jpeg
+banner: pexels-photo-113850.jpeg
 tags: cors cookie
 ---
 
