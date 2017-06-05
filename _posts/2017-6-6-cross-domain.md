@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 关于跨域
-banner: sort.jpg
+banner: cross-domain.jpg
 tags: 
 ---
 
