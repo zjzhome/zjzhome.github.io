@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  重温 XHR
-banner: cross-domain.jpg
+banner: ajax.jpg
 tags: js xhr
 ---
 
