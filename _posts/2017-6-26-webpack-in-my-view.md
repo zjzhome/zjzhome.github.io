@@ -26,3 +26,18 @@ var config = require('./config.js')
 ```
 
 webpack 也开始可刷版本号之旅，观望下，可以用上了。
+
+夸完了 Webpack，再说点消极的。
+
+许多项目其实还是需要兼容 IE8 浏览器的，webpack 以及 uglify 插件对 IE8 支持并不友好，需要额外的配置，有文章已经总结了：[煦涵说Webpack-IE低版本兼容指南](https://github.com/zuojj/fedlab/issues/5)。
+
+希望以后不要再做这种兼容的需求了。:sob:
+
+最后一个关于 requestAnimationFrame 的兼容，参见张鑫旭大大的博文：[CSS3动画那么强，requestAnimationFrame还有毛线用？](http://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%E5%8A%A8%E7%94%BB%E7%AE%97%E6%B3%95/)
+
+
+
+
+
+
+
