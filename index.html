@@ -1,50 +1,52 @@
----
-layout: default
----
-
-<div class="container">
-  <div class="posts">
-    {% for post in paginator.posts %}
-      <article class="post">
-
-        <h1 class="post-header">
-          <a class="post-link" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-        </h1>
-
-        <div class="entry">
-          {{ post.excerpt }}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>DarkZone'Home</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/ionicons.css">
+</head>
+<body>
+    <div class="cover">
+        <div class="profile">
+            <a class="p-title" href="/posts">
+                <img class="radius" src="/img/avatar.jpeg" alt="avatar">
+                <h1>DarkZone</h1>
+                <h3 style="display: none;">Web Developer</h3>
+            </a>  
+            <hr class="divider long">
+            <p class="p-desc">小前端 / 死宅男 / 偶尔抽风 / 时常不正经</p>
+            <hr class="divider short">
+            <div class="p-nav">
+                <ul class="p-links">
+                    <li><a href="/">Posts</a></li>
+                    <li><a href="/">About</a></li>
+                </ul>
+                <ul class="p-links socials">
+                    <li>
+                        <a href="https://github.com/zjzhome" target="_blank">
+                            <i class="icon ion-social-github"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:zjzhome@126.com?subject=Hello,%20I%20saw%20your%20web!">
+                            <i class="icon ion-email"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/" target="_blank">
+                            <i class="icon ion-social-rss"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-  
-        <div class="read-more">
-          <a href="{{ site.baseurl }}{{ post.url }}" class="read-more-link">继续阅读</a>
-        </div>
-      </article>
-    {% endfor %}
-  </div>
-
-  {% if paginator.total_pages > 1 %}
-  <div class="pagination">
-    {% if paginator.previous_page %}
-      <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
-    {% else %}
-      <span>&laquo; Prev</span>
-    {% endif %}
-
-    {% for page in (1..paginator.total_pages) %}
-      {% if page == paginator.page %}
-        <em>{{ page }}</em>
-      {% elsif page == 1 %}
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
-      {% else %}
-        <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
-      {% endif %}
-    {% endfor %}
-
-    {% if paginator.next_page %}
-      <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
-    {% else %}
-      <span>Next &raquo;</span>
-    {% endif %}
-  </div>
-  {% endif %}  
-</div>
+    </div>
+</body>
+</html>

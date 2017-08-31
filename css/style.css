@@ -1,0 +1,332 @@
+
+
+/***************/
+/* MEYER RESET */
+/***************/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1.4;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+
+/**************/
+/* BASE RULES */
+/**************/
+
+html {
+  font-size: 100%;
+  height: 100%;
+}
+
+body {
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+             "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+             SimSun, sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.4;
+  color: #383d44;
+  letter-spacing: 0.02em;
+  height: 100%;
+  background: rgba(17,26,35,0);
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 0 10px;
+  width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #3d4542;
+  font-weight: normal;
+
+  line-height: 1.7;
+  margin: 1em 0 15px;
+  padding: 0;
+
+  @include mobile {
+    line-height: 1.4;
+  }
+}
+
+h1 {
+  font-size: 26px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h4 {
+  font-size: 18px;
+  color: #88909a;
+}
+
+p {
+  font-size: 18px;
+  margin: 15px 0;
+  line-height: 1.5;
+}
+
+a {
+  color: #88909a;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color .3s;
+}
+
+ul, ol {
+  margin: 15px 0;
+  padding-left: 30px;
+}
+
+ol ul, ul ol, ul ul, ol ol {
+  margin: 0;
+}
+
+em, i {
+  font-style: italic;
+}
+
+strong, b {
+  font-weight: bold;
+}
+
+img {
+  max-width: 100%;
+}
+
+hr {
+  border: 0;
+
+  &.divider {
+    border-top: 1px solid rgba(255,255,255,0.14);
+    margin: 10px auto;
+  }
+  &.long {
+    width: 30%;
+  }
+  &.short {
+    width: 15%;
+  }
+
+  &.hr {
+    margin: 0;
+    padding: 0;
+    height: 2px;
+    background: #bbb;
+    background-image: -webkit-linear-gradient(left, #eee, #777, #eee);
+    background-image: -moz-linear-gradient(left, #eee, #777, #eee);
+    background-image: -ms-linear-gradient(left, #eee, #777, #eee);
+    background-image: -o-linear-gradient(left, #eee, #777, #eee);
+  }
+}
+
+
+.gmnoprint img {
+  max-width: none;
+}
+
+.date {
+  font-style: italic;
+  color: #88909a;
+}
+
+
+::-moz-selection {
+  color: #243e4c;
+  background: #dadbdb;
+}
+
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/* http://www.zhangxinxu.com/wordpress/2013/11/css-svg-image-blur/ */
+.blur {     
+    -webkit-filter: blur(10px); /* Chrome, Opera */
+       -moz-filter: blur(10px);
+        -ms-filter: blur(10px);    
+            filter: blur(10px);
+    
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+}
+
+::selection {
+    background: #ef8778;
+    color: #fff;
+    text-shadow: 0 0 transparent;
+}
+
+.radius {
+  border-radius: 50%;
+}
+
+.f-dn {
+  display: none;
+}
+
+
+.cover {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url(/img/thumb.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #f8f8f8;
+    text-align: center;
+}
+
+.profile {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    -webkit-transform: translateY(-50%);  
+    transform: translateY(-50%);    
+}
+
+.profile .p-title {
+    display: block;
+}   
+
+.profile .p-title img {
+    width: 116px;
+    height: 116px;
+}
+.profile .p-title h1 { 
+    margin: 10px auto;
+    color: #f8f8f8;
+    font-weight: bold;
+    font-size: 30px;
+    letter-spacing: .05rem;
+    text-shadow: 0 0 0.5px #f8f8f8;
+}
+
+.profile .p-desc {
+    font-size: 16px;
+}
+
+.profile .p-nav .p-links {
+  margin: 26px 0;
+}
+
+.profile .p-nav .p-links li {
+    position: relative;
+    margin: 0 12px;
+    display: inline-block;
+    border: 1px solid #f8f8f8;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    line-height: 1em;
+    font-size: 14px;
+    transition: all .3s ease;
+}
+
+
+.profile .p-nav .p-links li:hover {
+    -webkit-transform: scale(1.1) rotate(4deg);
+    transform: scale(1.1) rotate(4deg);
+}
+
+.profile .p-nav .p-links li > a {
+    display: block;
+    padding: 8px 20px;
+    opacity: .8;
+    color: #f8f8f8;
+    transition: all .3s ease;
+}
+
+.profile .p-nav .p-links li > a:hover {
+    color: #e98f74;
+}
+
+.profile .p-nav .p-links.socials {
+    margin-top: 30px;
+}
+
+.profile .p-nav .p-links.socials li {
+    border: 0;
+}
+
+.profile .p-nav .p-links.socials li > a {
+    padding: 6px 10px;
+    color: #fff;
+}
+.profile .p-nav .p-links.socials li > a:hover {
+    color: #e98f74;
+}
+
+.profile .p-nav .p-links.socials li > a .icon {
+    font-size: 1.7em;
+}
+
+
+
+
+
+
+
+
+
